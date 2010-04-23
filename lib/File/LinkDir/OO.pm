@@ -8,7 +8,7 @@ use File::Find;
 use File::Path qw<remove_tree make_path>;
 use File::Spec::Functions qw<catpath splitpath>;
 
-our $VERSION = '0.05a';
+our $VERSION = '1.00_01';
 
 sub new
 {
@@ -308,11 +308,19 @@ Remove and/or overwrite existing files/dirs.
 
 Creates hard links instead of symlinks.
 
+=head1 BUGS
+
+This is a test release but there are no known issues at this time.
+
 =head1 AUTHORS
 
 Hinrik E<Ouml>rn SigurE<eth>sson, hinrik.sig@gmail.com
 
 Matthew Musgrove, mr.muskrat@gmail.com
+
+=head1 SEE ALSO
+
+L<File::LinkDir>
 
 =head1 LICENSE AND COPYRIGHT
 
