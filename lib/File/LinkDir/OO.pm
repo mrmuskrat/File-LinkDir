@@ -233,37 +233,45 @@ File::LinkDir::OO - Create links in one directory for files in another
 
 =head1 SYNOPSIS
 
- use File::LinkDir::OO;
- File::LinkDir->new( 'source' => '/path/to/dir', 'dest' => '/dest/path', 'hard', 'recursive' );
- File::LinkDir->run();
- File::LinkDir->init( 'source' => '/new/path', 'dest' => '/new/dest', );
- File::LinkDir->run();
+  use File::LinkDir::OO;
+  my $linkdir = File::LinkDir->new( 'source' => '/path/to/dir', 'dest' => '/dest/path', 'hard', 'recursive' );
+  $linkdir->run();
+  $linkdir->init( 'source' => '/new/path', 'dest' => '/new/dest', );
+  $linkdir->run();
+
+=head1 DESCRIPTION
+
+By default, File::LinkDir::OO will create symlinks in the destination directory for all top-level files, directories or symlinks found in the source directory. This is very useful for keeping the dot files in your C<$HOME> under version control. A typical use case:
+
+  use File::LinkDir::OO;
+  my $linkdir = File::LinkDir->new( 'source' => '.', 'dest' => '~' );
+  $linkdir->run();
 
 =head1 OPTIONS
 
 =head2 dry-run
 
-    C<dry-run =&gt; 1>
+  C<dry-run =&gt; 1>
 
-  Prints what would have been done without actually doing it.
+Prints what would have been done without actually doing it.
 
 =head2 source
 
-    C<source  =&gt; DIR>
+  C<source  =&gt; DIR>
 
-  The source directory.
+The source directory.
   
 =head2 dest
 
-    C<dest    =&gt; DIR>
+  C<dest    =&gt; DIR>
 
-  The destination directory.
+The destination directory.
 
 =head2 recursive
 
-    C<recursive =&gt; 1>
+  C<recursive =&gt; 1>
 
-  With C<recursive =&gt; 1>, it will not create symlinks to subdirectories
+With C<recursive =&gt; 1>, it will not create symlinks to subdirectories
 found in the source directory. It will instead recurse into them and create
 symlinks for any files or symlinks it finds. Any subdirectories not found in
 the destination directory will be created. This approach is useful for
@@ -276,29 +284,29 @@ makes sense because the symlinks might be relative.
 
 =head2 ignore
 
-    C<ignore   =&gt; RX>
+  C<ignore   =&gt; RX>
 
-  RX is a regex matching files to ignore. If C<ignore   =&gt; 1> is not
+RX is a regex matching files to ignore. If C<ignore   =&gt; 1> is not
 specified, it defaults to ignoring F<.git> and F<.svn> directories and their
 contents.
 
 =head2 add-ignore
 
-    C<add-ignore =&gt; RX>
+  C<add-ignore =&gt; RX>
 
-  Like C<ignore   =&gt; RX> but doesn't replace the default.
+Like C<ignore   =&gt; RX> but doesn't replace the default.
 
 =head2 force
 
-    C<force      =&gt; 1>
+  C<force      =&gt; 1>
 
-  Remove and/or overwrite existing files/dirs.
+Remove and/or overwrite existing files/dirs.
 
 =head2 hard
 
-    C<hard       =&gt; 1>
+  C<hard       =&gt; 1>
 
-  Creates hard links instead of symlinks.
+Creates hard links instead of symlinks.
 
 =head1 AUTHORS
 
