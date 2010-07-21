@@ -9,6 +9,7 @@ use File::Path qw<remove_tree make_path>;
 use File::Spec::Functions qw<catpath splitpath>;
 
 our $VERSION = '1.00_01';
+$VERSION = eval $VERSION;
 
 sub new
 {
@@ -75,6 +76,7 @@ sub init
     
     $self->{source} = abs_path( $self->{source} );
     die "You must supply a source directory\n" unless ( defined $self->{source} && -d $self->{source} );
+    $self->{dest} = abs_path( $self->{dest} );
     die "You must supply a dest directory\n" unless ( defined $self->{dest} && -d $self->{dest} );
 
 }
@@ -216,7 +218,14 @@ sub normal
         
         if ( $self->{hard} )
         {
-            link "$source/$file", "$dest/$file" or warn "Can't create '$dest/$file': $!\n";
+            if ( -d "$source/$file" )
+            {
+                warn "Can't create '$dest/$file' as a hard link, skipping\n";
+            }
+            else
+            {
+                link "$source/$file", "$dest/$file" or warn "Can't create '$dest/$file': $!\n";
+            }
         }
         else
         {
@@ -224,6 +233,8 @@ sub normal
         }
     }
 }
+
+1;
 
 =encoding UTF-8
 
