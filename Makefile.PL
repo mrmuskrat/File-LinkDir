@@ -1,10 +1,10 @@
 use strict;
 use warnings;
 use inc::Module::Install;
-use 5.006;
+use 5.008;
 
 name           ('File-LinkDir-OO');
-perl_version   ('5.006');
+perl_version   ('5.008');
 author         ('Matthew Musgrove <mr.muskrat@gmail.com>');
 abstract_from  ('lib/File/LinkDir/OO.pm');
 version_from   ('lib/File/LinkDir/OO.pm');
