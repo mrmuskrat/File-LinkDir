@@ -24,7 +24,7 @@ chdir $source or die "Couldn't chdir to '$source'\n";
 
 find( { wanted => sub { recursive( $source, $dest ) }, no_chdir => 1 }, $source );
 
-#rmdir "$dest/a";
+rmdir "$dest/a";
 
 sub recursive
 {
@@ -33,13 +33,11 @@ sub recursive
     my $file = $File::Find::name;
     $file =~ s{^$source/}{};
 
-#    next if $file =~ /^\.{1,2}$/;
-
     if ( ! -d $file && ! -d "$dest/$file" )
     {
         ok( -f "$dest/$file", "$dest/$file is a file (hard link)" );
         ok( ( stat "$dest/$file" )[1] == ( stat "$source/$file" )[1], "destination and source share an inode" );
-#        unlink "$dest/$file";
+        unlink "$dest/$file";
     }
     elsif ( $file ne $source )
     {
