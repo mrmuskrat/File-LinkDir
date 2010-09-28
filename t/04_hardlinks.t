@@ -23,8 +23,7 @@ opendir my $dir_handle, $source or die "Can't open the dir $source: $!; aborted"
 while ( defined ( my $file = readdir $dir_handle ) )
 {
     next if $file =~ /^\.{1,2}$/;
-
-    if ( -d $file )
+    if ( -d "$source/$file" )
     {
        ok( ! -e "$dest/$file", "$dest/$file does not exist" );
     }
