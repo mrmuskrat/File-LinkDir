@@ -1,3 +1,9 @@
+1.00_02 Tue Sep 28 16:03:56 CDT 2010
+    - Improved the option handling in init().
+    - Corrected the behavior of run() so that it changes back to the original 
+        directory when it is finished.
+    - Corrected -d test in t/04_hardlinks.t to use the directory in the 
+        filename.
 1.00_01 Fri Apr 23 16:04:24 CDT 2010
     - First release.
     - Based on File::LinkDir version 0.05.
