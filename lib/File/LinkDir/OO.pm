@@ -34,30 +34,16 @@ sub init
     $self->{force} = 0;
     $self->{hard} = 0;
 
-    my ( $opt, $value );
-    for my $tmp ( @opts )
+    while( @opts )
     {
-        if ( ! defined $opt || ( defined $opt && defined $value ) )
+        my ( $opt, $value ) = ( shift @opts, shift @opts );
+        if ( $opt eq 'addignore' )
         {
-            $opt = $tmp;
-            undef $value;
-            if ( $opt eq 'force' || $opt eq 'hard' )
-            {
-                $self->{$opt} = 1;
-                undef $opt;
-            }
+            push @{ $self->{ $opt } }, $value;
         }
-        elsif ( ! defined $value )
+        else
         {
-            $value = $tmp;
-            if ( $opt eq 'addignore' )
-            {
-                push @{ $self->{ $opt } }, $value;
-            }
-            else
-            {
-                $self->{$opt} = $value;
-            }
+            $self->{$opt} = $value;
         }
     }
 
@@ -74,22 +60,27 @@ sub init
         die "Invalid regex passed to addignore: $@\n" if $@;
     }
     
+    die "You must supply a source directory\n" unless ( defined $self->{source} );
     $self->{source} = abs_path( $self->{source} );
-    die "You must supply a source directory\n" unless ( defined $self->{source} && -d $self->{source} );
-    $self->{dest} = abs_path( $self->{dest} );
-    die "You must supply a dest directory\n" unless ( defined $self->{dest} && -d $self->{dest} );
+    die "You must supply a valid source directory\n" unless ( -d $self->{source} );
 
+    die "You must supply a dest directory\n" unless ( defined $self->{dest} );
+    $self->{dest} = abs_path( $self->{dest} );
+    die "You must supply a valid dest directory\n" unless ( -d $self->{dest} );
 }
 
 sub run
 {
     my $self = shift;
 
+    my $pwd = getcwd();
     chdir $self->{source} or die "Couldn't chdir to '$self->{source}'\n";
 
     $self->{recursive}
         ? find( { wanted => sub { $self->recursive() }, no_chdir => 1 }, $self->{source} )
         : $self->normal();
+
+    chdir $pwd or die "Couldn't chdir to '$pwd'\n";
 }
 
 sub recursive
