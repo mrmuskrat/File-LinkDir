@@ -240,7 +240,7 @@ File::LinkDir::OO - Create links in one directory for files in another
 =head1 SYNOPSIS
 
   use File::LinkDir::OO;
-  my $linkdir = File::LinkDir->new( 'source' => '/path/to/dir', 'dest' => '/dest/path', 'hard', 'recursive' );
+  my $linkdir = File::LinkDir->new( 'source' => '/path/to/dir', 'dest' => '/dest/path', 'hard' => 1, 'recursive' => 1 );
   $linkdir->run();
   $linkdir->init( 'source' => '/new/path', 'dest' => '/new/dest', );
   $linkdir->run();
@@ -310,9 +310,9 @@ RX is a regex matching files to ignore. If C<ignore   =&gt; 1> is not
 specified, it defaults to ignoring F<.git> and F<.svn> directories and their
 contents.
 
-=head2 add-ignore
+=head2 addignore
 
-  C<add-ignore =&gt; RX>
+  C<addignore =&gt; RX>
 
 Like C<ignore   =&gt; RX> but doesn't replace the default.
 
