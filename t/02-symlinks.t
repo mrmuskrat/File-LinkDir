@@ -1,6 +1,5 @@
-use strict;
-use warnings;
-use lib 'lib';
+#!perl
+
 use Test::More tests => 20;
 
 use Cwd qw<abs_path>;

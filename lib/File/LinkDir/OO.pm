@@ -8,7 +8,7 @@ use File::Find;
 use File::Path qw<remove_tree make_path>;
 use File::Spec::Functions qw<catpath splitpath>;
 
-our $VERSION = '1.00_02';
+our $VERSION = '1.00_03';
 $VERSION = eval $VERSION;
 
 sub new
@@ -63,10 +63,12 @@ sub init
     die "You must supply a source directory\n" unless ( defined $self->{source} );
     $self->{source} = abs_path( $self->{source} );
     die "You must supply a valid source directory\n" unless ( -d $self->{source} );
+    $self->{source} =~ /^(.*)$/ && ($self->{source} = $1);
 
     die "You must supply a dest directory\n" unless ( defined $self->{dest} );
     $self->{dest} = abs_path( $self->{dest} );
     die "You must supply a valid dest directory\n" unless ( -d $self->{dest} );
+    $self->{dest} =~ /^(.*)$/ && ($self->{dest} = $1);
 }
 
 sub run
@@ -74,16 +76,18 @@ sub run
     my $self = shift;
 
     my $pwd = getcwd();
+    $pwd =~ /^(.*)$/ && ($pwd = $1);
+
     chdir $self->{source} or die "Couldn't chdir to '$self->{source}'\n";
 
     $self->{recursive}
-        ? find( { wanted => sub { $self->recursive() }, no_chdir => 1 }, $self->{source} )
-        : $self->normal();
+        ? find( { wanted => sub { $self->_recursive() }, no_chdir => 1 }, $self->{source} )
+        : $self->_normal();
 
     chdir $pwd or die "Couldn't chdir to '$pwd'\n";
 }
 
-sub recursive
+sub _recursive
 {
     my $self = shift;
 
@@ -156,7 +160,7 @@ sub recursive
     warn "Can't create '$dest/$file': $!\n" unless $success;
 }
 
-sub normal
+sub _normal
 {
     my $self = shift;
 
@@ -167,6 +171,8 @@ sub normal
 
     while ( defined ( my $file = readdir $dir_handle ) )
     {
+        $file =~ /^(.*)$/ && ($file = $1); # I'm open to suggestions
+    
         next if $file =~ /^\.{1,2}$/;
         next if $file =~ $self->{ignore};
         next if grep { $file =~ /$_/ } @{ $self->{addignore} };
@@ -225,8 +231,6 @@ sub normal
     }
 }
 
-1;
-
 =encoding UTF-8
 
 =head1 NAME
@@ -248,6 +252,20 @@ By default, File::LinkDir::OO will create symlinks in the destination directory 
   use File::LinkDir::OO;
   my $linkdir = File::LinkDir->new( 'source' => '.', 'dest' => '~' );
   $linkdir->run();
+
+=head1 METHODS
+
+=head2 new
+
+Creates a new File::LinkDir::OO object. This will call init() to set the options.
+
+=head2 init
+
+Initializes the object according to the options that were passed. This is automatically called by new() but can be called if you want to reuse the object for other directories.
+
+=head2 run
+
+Creates the links based on the options that were used in new() and/or init().
 
 =head1 OPTIONS
 
@@ -310,26 +328,64 @@ Remove and/or overwrite existing files/dirs.
 
 Creates hard links instead of symlinks.
 
+=head1 AUTHOR
+
+Matthew Musgrove, C<< <mr.muskrat at gmail.com> >>
+
 =head1 BUGS
 
-This is a test release but there are no known issues at this time.
+Please report any bugs or feature requests to C<bug-file-linkdir-oo at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=File-LinkDir-OO>.  I will be notified, and then you'll
+automatically be notified of progress on your bug as I make changes.
 
-=head1 AUTHORS
+=head1 SUPPORT
 
-Hinrik E<Ouml>rn SigurE<eth>sson, hinrik.sig@gmail.com
+You can find documentation for this module with the perldoc command.
 
-Matthew Musgrove, mr.muskrat@gmail.com
+    perldoc File::LinkDir::OO
+
+
+You can also look for information at:
+
+=over 4
+
+=item * RT: CPAN's request tracker
+
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=File-LinkDir-OO>
+
+=item * AnnoCPAN: Annotated CPAN documentation
+
+L<http://annocpan.org/dist/File-LinkDir-OO>
+
+=item * CPAN Ratings
+
+L<http://cpanratings.perl.org/d/File-LinkDir-OO>
+
+=item * Search CPAN
+
+L<http://search.cpan.org/dist/File-LinkDir-OO/>
+
+=back
+
+=head1 ACKNOWLEDGEMENTS
+
+This module was based heavily on Hinrik E<Ouml>rn SigurE<eth>sson's L<File::LinkDir>.
+
+=head1 LICENSE AND COPYRIGHT
+
+Copyright 2010 Matthew Musgrove.
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of either: the GNU General Public License as published
+by the Free Software Foundation; or the Artistic License.
+
+See http://dev.perl.org/licenses/ for more information.
 
 =head1 SEE ALSO
 
 L<File::LinkDir>
 
-=head1 LICENSE AND COPYRIGHT
-
-Copyright 2009 - 2010 Hinrik E<Ouml>rn SigurE<eth>sson, Matthew Musgrove
-
-This program is free software, you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
 =cut
+
+1; # End of File::LinkDir::OO
 

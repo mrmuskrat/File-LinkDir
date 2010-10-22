@@ -1,6 +1,5 @@
-use strict;
-use warnings;
-use lib 'lib';
+#!perl -T
+
 use Test::More tests => 2;
 
 use File::LinkDir::OO;

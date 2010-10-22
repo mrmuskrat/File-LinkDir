@@ -1,3 +1,7 @@
+1.00_03 Fri Oct 22 16:24:50 CDT 2010
+    - Revised tests.
+    - Added additional documentation to README and the pod of
+        File::LinkDir::OO.
 1.00_02 Tue Sep 28 16:03:56 CDT 2010
     - Improved the option handling in init().
     - Corrected the behavior of run() so that it changes back to the original 
