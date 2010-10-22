@@ -1,4 +1,6 @@
 File::LinkDir::OO - Create links in one directory for files in another
 
-This is an object oriented approach to File::LinkDir's functionality.
+This is a scriptable, object oriented approach to File::LinkDir's functionality.
+
+In addition, File::LinkDir::OO also adds the ability to use hard links.
 
