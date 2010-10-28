@@ -230,6 +230,8 @@ sub _normal
     }
 }
 
+=pod
+
 =encoding utf8
 
 =head1 NAME
@@ -270,27 +272,27 @@ Creates the links based on the options that were used in new() and/or init().
 
 =head2 dry-run
 
-  C<dry-run =&gt; 1>
+C<dry-run =E<gt> 1>
 
 Prints what would have been done without actually doing it.
 
 =head2 source
 
-  C<source  =&gt; DIR>
+C<source =E<gt> DIR>
 
 The source directory.
   
 =head2 dest
 
-  C<dest    =&gt; DIR>
+C<dest =E<gt> DIR>
 
 The destination directory.
 
 =head2 recursive
 
-  C<recursive =&gt; 1>
+C<recursive =E<gt> 1>
 
-With C<recursive =&gt; 1>, it will not create symlinks to subdirectories
+With C<recursive =E<gt> 1>, it will not create symlinks to subdirectories
 found in the source directory. It will instead recurse into them and create
 symlinks for any files or symlinks it finds. Any subdirectories not found in
 the destination directory will be created. This approach is useful for
@@ -303,27 +305,27 @@ makes sense because the symlinks might be relative.
 
 =head2 ignore
 
-  C<ignore   =&gt; RX>
+C<ignore =E<gt> RX>
 
-RX is a regex matching files to ignore. If C<ignore   =&gt; 1> is not
+RX is a regex matching files to ignore. If C<ignore =E<gt> 1> is not
 specified, it defaults to ignoring F<.git> and F<.svn> directories and their
 contents.
 
 =head2 addignore
 
-  C<addignore =&gt; RX>
+C<addignore =E<gt> RX>
 
-Like C<ignore   =&gt; RX> but doesn't replace the default.
+Like C<ignore =E<gt> RX> but doesn't replace the default.
 
 =head2 force
 
-  C<force      =&gt; 1>
+C<force =E<gt> 1>
 
 Remove and/or overwrite existing files/dirs.
 
 =head2 hard
 
-  C<hard       =&gt; 1>
+C<hard =E<gt> 1>
 
 Creates hard links instead of symlinks.
 
