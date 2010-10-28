@@ -3,6 +3,7 @@ package File::LinkDir::OO;
 use strict;
 use warnings;
 
+use 5.008;
 use Cwd qw<abs_path getcwd>;
 use File::Find;
 use File::Path qw<remove_tree make_path>;
