@@ -230,7 +230,7 @@ sub _normal
     }
 }
 
-=encoding UTF-8
+=encoding utf8
 
 =head1 NAME
 
