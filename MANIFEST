@@ -35,6 +35,7 @@ t/tests/src/a/6
 t/tests/src/a/7
 t/tests/src/a/8
 t/tests/src/a/9
+inc/Module/Install.pm
 inc/Module/Install/Metadata.pm
 inc/Module/Install/Base.pm
 inc/Module/Install/Makefile.pm
