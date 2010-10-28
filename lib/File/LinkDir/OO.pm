@@ -230,6 +230,8 @@ sub _normal
     }
 }
 
+=pod
+
 =encoding utf8
 
 =head1 NAME
