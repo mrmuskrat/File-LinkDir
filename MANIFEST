@@ -2,6 +2,7 @@ lib/File/LinkDir/OO.pm
 Changes
 MANIFEST
 Makefile.PL
+META.yml
 README
 t/00-load.t
 t/01-object.t
@@ -34,14 +35,12 @@ t/tests/src/a/6
 t/tests/src/a/7
 t/tests/src/a/8
 t/tests/src/a/9
-inc/Module/Install/Base.pm
-inc/Module/Install/Can.pm
-inc/Module/Install/Fetch.pm
-inc/Module/Install/GithubMeta.pm
-inc/Module/Install/Makefile.pm
 inc/Module/Install/Metadata.pm
-inc/Module/Install/Scripts.pm
-inc/Module/Install/Win32.pm
+inc/Module/Install/Base.pm
+inc/Module/Install/Makefile.pm
+inc/Module/Install/GithubMeta.pm
+inc/Module/Install/Can.pm
 inc/Module/Install/WriteAll.pm
-inc/Module/Install.pm
+inc/Module/Install/Win32.pm
+inc/Module/Install/Fetch.pm
 
