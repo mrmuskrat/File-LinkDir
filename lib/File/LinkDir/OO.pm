@@ -138,7 +138,7 @@ sub _recursive
     {
         warn "Creating '$dest/$file -> '$source/$file''\n" if $self->{verbose};
     }
-    my $path = catpath( ( splitpath( "$dest/$file" ) )[0,1] );
+    my $path = catpath( ( splitpath( "$dest/$file" ) )[0,1], '' );
     if ( ! -d $path )
     {
         local $@;
