@@ -1,7 +1,7 @@
 ---
 abstract: 'Create links in one directory for files in another'
 author:
-  - 'Matthew Musgrove, C<< <mr.muskrat at gmail.com> >>'
+  - 'Hinrik Örn Sigurðsson, C<< <hinrik.sig@gmail.com> >>'
 build_requires:
   ExtUtils::MakeMaker: 6.42
   Test::More: 0
@@ -25,4 +25,4 @@ resources:
   homepage: http://github.com/mrmuskrat/File-LinkDir-OO/tree
   license: http://opensource.org/licenses/gpl-license.php
   repository: git://github.com/mrmuskrat/File-LinkDir-OO.git
-version: 1.00_04
+version: 1.00_05
