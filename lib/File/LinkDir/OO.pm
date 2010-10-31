@@ -9,7 +9,7 @@ use File::Find;
 use File::Path qw<remove_tree make_path>;
 use File::Spec::Functions qw<catpath splitpath>;
 
-our $VERSION = '1.00_04';
+our $VERSION = '1.00_05';
 $VERSION = eval $VERSION;
 
 sub new
@@ -277,7 +277,7 @@ File::LinkDir::OO - Create links in one directory for files in another
 =head1 SYNOPSIS
 
   use File::LinkDir::OO;
-  my $linkdir = File::LinkDir->new( 'source' => '/path/to/dir', 'dest' => '/dest/path', 'hard' => 1, 'recursive' => 1 );
+  my $linkdir = File::LinkDir:OO->new( 'source' => '/path/to/dir', 'dest' => '/dest/path', 'hard' => 1, 'recursive' => 1 );
   $linkdir->run();
   $linkdir->init( 'source' => '/new/path', 'dest' => '/new/dest', );
   $linkdir->run();
@@ -287,14 +287,14 @@ File::LinkDir::OO - Create links in one directory for files in another
 By default, File::LinkDir::OO will create symlinks in the destination directory for all top-level files, directories or symlinks found in the source directory. This is very useful for keeping the dot files in your C<$HOME> under version control. A typical use case:
 
   use File::LinkDir::OO;
-  my $linkdir = File::LinkDir->new( 'source' => '.', 'dest' => '~' );
+  my $linkdir = File::LinkDir::OO->new( 'source' => '.', 'dest' => '~' );
   $linkdir->run();
 
 =head1 METHODS
 
 =head2 new
 
-Creates a new File::LinkDir::OO object. This will call init() to set the options.
+Creates a new File::LinkDir::OO object. This will call init() to set the options unless you pass 'skipinit' as the first argument.
 
 =head2 init
 
@@ -367,7 +367,9 @@ Creates hard links instead of symlinks.
 
 =head1 AUTHOR
 
-Matthew Musgrove, C<< <mr.muskrat at gmail.com> >>
+
+Hinrik E<Ouml>rn SigurE<eth>sson, C<< <hinrik.sig@gmail.com> >>
+Matthew Musgrove, C<< <mr.muskrat@gmail.com> >>
 
 =head1 BUGS
 
@@ -404,13 +406,11 @@ L<http://search.cpan.org/dist/File-LinkDir-OO/>
 
 =back
 
-=head1 ACKNOWLEDGEMENTS
+=head1 COPYRIGHT
 
-This module was based heavily on Hinrik E<Ouml>rn SigurE<eth>sson's L<File::LinkDir>.
+Copyright (c) 2009-2010 the File::LinkDir::OO L</AUTHOR> as listed above.
 
-=head1 LICENSE AND COPYRIGHT
-
-Copyright 2010 Matthew Musgrove.
+=head1 LICENSE
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of either: the GNU General Public License as published

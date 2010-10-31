@@ -10,7 +10,7 @@ use File::LinkDir::OO;
 
 my $FLD = File::LinkDir::OO->new( 'skipinit' );
 
-my ($dry_run, $source, $dest, $recursive, $force, $hard, @add_ignore);
+my ($dry_run, $source, $dest, $recursive, $force, $hard, @addignore) = ( 0, '', '', 0, 0, 0 );
 my $ignore = '(?:.*/)?.(?:git.*|svn)(?:/.*)?$';
 
 GetOptions(
@@ -19,7 +19,7 @@ GetOptions(
     'd|dest=s'       => \$dest,
     'r|recursive'    => \$recursive,
     'i|ignore=s'     => \$ignore,
-    'a|add-ignore=s' => \@add_ignore,
+    'a|add-ignore=s' => \@addignore,
     'f|force'        => \$force,
     'h|hard'         => \$hard,
     'v|version'      => sub {
@@ -34,35 +34,17 @@ GetOptions(
     )
 );
 
-if ( defined $dry_run )
-{
-    $dry_run = qq{-dryrun => "$dry_run"};
-}
-$source = qq{-source => "$source"};
-$dest = qq{-dest => "$dest"};
-if ( defined $recursive )
-{
-    $recursive = qq{-recursive => "$recursive"};
-}
-my $add_ignore = qq{-addignore => \@add_ignore};
-if ( defined $force )
-{
-    $force = qq{-force => "$force"};
-}
-if ( defined $hard )
-{
-    $hard = qq{-hard => "$hard"};
-}
 $FLD->init(
-    -dry-run => "$dry_run",
-    -source => "$source",
-    -dest => "$dest",
-    -recursive => "$recursive",
-    -ignore => $ignore,
-    -addignore => \@add_ignore,
-    -force => $force,
-    -hard => $hard,
+    dryrun    => $dry_run,
+    source    => $source,
+    dest      => $dest,
+    recursive => $recursive,
+    ignore    => $ignore,
+    addignore => \@addignore,
+    force     => $force,
+    hard      => $hard,
 );
+
 $FLD->run();
 
 =encoding utf8
@@ -110,16 +92,24 @@ makes sense because the symlinks might be relative.
 If C<--ignore> is not specified, it defaults to ignoring F<.git> and F<.svn>
 directories and their contents.
 
+See L<File::LinkDir::OO> for complete details.
+
 =head1 AUTHOR
 
-Hinrik E<Ouml>rn SigurE<eth>sson, hinrik.sig@gmail.com
+Hinrik E<Ouml>rn SigurE<eth>sson, <hinrik.sig@gmail.com>
+Matthew Musgrove, <mr.muskrat@gmail.com>
 
-=head1 LICENSE AND COPYRIGHT
+=head1 COPYRIGHT
 
-Copyright 2009 Hinrik E<Ouml>rn SigurE<eth>sson
+Copyright (c) 2009-2010 the File::LinkDir::OO L</AUTHOR> as listed above.
 
-This program is free software, you can redistribute it and/or modify
-it under the same terms as Perl itself.
+=head1 LICENSE
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of either: the GNU General Public License as published
+by the Free Software Foundation; or the Artistic License.
+
+See http://dev.perl.org/licenses/ for more information.
 
 =cut
 
