@@ -367,7 +367,6 @@ Creates hard links instead of symlinks.
 
 =head1 AUTHOR
 
-
 Hinrik E<Ouml>rn SigurE<eth>sson, C<< <hinrik.sig@gmail.com> >>
 Matthew Musgrove, C<< <mr.muskrat@gmail.com> >>
 
@@ -408,7 +407,7 @@ L<http://search.cpan.org/dist/File-LinkDir-OO/>
 
 =head1 COPYRIGHT
 
-Copyright (c) 2009-2010 the File::LinkDir::OO L</AUTHOR> as listed above.
+Copyright (c) 2009-2010 Hinrik E<Ouml>rn SigurE<eth>sson and Matthew Musgrove
 
 =head1 LICENSE
 
