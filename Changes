@@ -1,3 +1,8 @@
+1.00_05 Sun Oct 31 10:28:21 CDT 2010
+    - Added link-files.
+    - Added dryrun option to File::LinkDir::OO.
+    - Corrected a few mistakes in the POD.
+    - Updated AUTHOR and COPYRIGHT sections of the POD.
 1.00_04 Wed Oct 27 22:55:33 CDT 2010
     - Makefile.PL changes.
     - Corrected POD markup and encoding.
