@@ -19,6 +19,8 @@ sub new
     my $self = {};
     bless $self, $class;
 
+    $self->{version} = $VERSION;
+
     $self->init( @_ );
 
     return $self;
@@ -30,10 +32,13 @@ sub init
     my %opt;
     my @opts = @_;
 
+    return if $opts[0] eq 'skipinit';
+
     $self->{addignore} = [];
     $self->{ignore} = '(?:.*/)?.(?:git|svn)(?:/.*)?$';
     $self->{force} = 0;
     $self->{hard} = 0;
+    $self->{dryrun} = 0;
 
     while( @opts )
     {
@@ -124,20 +129,36 @@ sub _recursive
 
         if ( ! $self->{force} )
         {
-            warn "force is off, not overwriting '$dest/$file'\n";
+            $self->{dryrun} 
+                ? warn "force is off, would not overwrite '$dest/$file'\n"
+                : warn "force is off, not overwriting '$dest/$file'\n"
+            ;
             return;
         }
         
-        warn "Overwriting '$dest/$file' -> '$source/$file'\n" if $self->{verbose};
-        if ( ! unlink "$dest/$file" )
+        if ( $self->{dryrun} )
         {
-            warn "Can't remove '$dest/$file': $!\n";
+            warn "Would overwrite '$dest/$file' -> '$source/$file'\n";
             return;
+        }
+        else
+        {
+            warn "Overwriting '$dest/$file' -> '$source/$file'\n" if $self->{verbose};
+            if ( ! unlink "$dest/$file" )
+            {
+                warn "Can't remove '$dest/$file': $!\n";
+                return;
+            }
         }
     }
     else
     {
-        warn "Creating '$dest/$file -> '$source/$file''\n" if $self->{verbose};
+        if ( $self->{dryrun} )
+        {
+            warn "Would create '$dest/$file' --> '$source/$file'\n";
+            return;
+        }
+        warn "Creating '$dest/$file' -> '$source/$file'\n" if $self->{verbose};
     }
     my $path = catpath( ( splitpath( "$dest/$file" ) )[0,1], '' );
     if ( ! -d $path )
@@ -186,33 +207,47 @@ sub _normal
         {
             if ( ! $self->{force} )
             {
-                warn "force is off, not overwriting '$dest/$file'\n";
+                $self->{dryrun}
+                    ? warn "force is off, would not overwrite '$dest/$file'\n"
+                    : warn "force is off, not overwriting '$dest/$file'\n"
+                ;
                 next;
             }
             
-            warn "Overwriting '$dest/$file' -> '$source/$file'\n" if $self->{verbose};
-
-            if ( -d "$dest/$file" )
+            if ( $self->{dryrun} )
             {
-                local $@;
-                eval { remove_tree("$dest/$file") };
-                if ( $@ )
+                warn "Would overwrite '$dest/$file' -> '$source/$file'\n";
+                next;
+            }
+            else
+            {
+                warn "Overwriting '$dest/$file' -> '$source/$file'\n" if $self->{verbose};
+
+                if ( -d "$dest/$file" )
                 {
-                    warn "Failed to remove directory '$dest/$file': $@\n";
+                    local $@;
+                    eval { remove_tree("$dest/$file") };
+                    if ( $@ )
+                    {
+                        warn "Failed to remove directory '$dest/$file': $@\n";
+                        next;
+                    }
+                }
+                elsif ( ! unlink( "$dest/$file" ) )
+                {
+                    warn "Failed to remove file '$dest/$file': $!\n";
                     next;
                 }
             }
-            elsif ( ! unlink( "$dest/$file" ) )
-            {
-                warn "Failed to remove file '$dest/$file': $!\n";
-                next;
-            }
-        }
-        else
-        {
-            warn "Creating '$dest/$file' -> '$source/$file'\n" if $self->{verbose};
         }
         
+        if ( $self->{dryrun} )
+        {
+            warn "Would create '$dest/$file' -> '$source/$file'\n";
+            next;
+        }
+        
+        warn "Creating '$dest/$file' -> '$source/$file'\n" if $self->{verbose};
         if ( $self->{hard} )
         {
             if ( -d "$source/$file" )
@@ -271,9 +306,9 @@ Creates the links based on the options that were used in new() and/or init().
 
 =head1 OPTIONS
 
-=head2 dry-run
+=head2 dryrun
 
-C<dry-run =E<gt> 1>
+C<dryrun =E<gt> 1>
 
 Prints what would have been done without actually doing it.
 
