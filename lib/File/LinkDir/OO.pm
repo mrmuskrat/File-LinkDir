@@ -35,7 +35,7 @@ sub init
     return if $opts[0] eq 'skipinit';
 
     $self->{addignore} = [];
-    $self->{ignore} = '(?:.*/)?.(?:git|svn)(?:/.*)?$';
+    $self->{ignore} = '(?:.*/)?.(?:git(?!config\b).*|svn)(?:/.*)?$';
     $self->{force} = 0;
     $self->{hard} = 0;
     $self->{dryrun} = 0;
@@ -344,8 +344,9 @@ makes sense because the symlinks might be relative.
 C<ignore =E<gt> RX>
 
 RX is a regex matching files to ignore. If C<ignore =E<gt> 1> is not
-specified, it defaults to ignoring F<.git> and F<.svn> directories and their
-contents.
+specified, it defaults to ignoring F<.git> (plus F<.gitignore>,
+F<.gitmodules>, etc, but not F<.gitconfig>) and F<.svn> directories and
+their contents.
 
 =head2 addignore
 
