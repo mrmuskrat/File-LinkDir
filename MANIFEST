@@ -1,4 +1,4 @@
-lib/File/LinkDir/OO.pm
+lib/File/LinkDir.pm
 Changes
 MANIFEST
 Makefile.PL

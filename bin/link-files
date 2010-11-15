@@ -6,9 +6,9 @@ use warnings;
 use Getopt::Long qw<:config auto_help bundling>;
 use Pod::Find;
 use Pod::Usage;
-use File::LinkDir::OO;
+use File::LinkDir;
 
-my $FLD = File::LinkDir::OO->new( 'skipinit' );
+my $FLD = File::LinkDir->new( 'skipinit' );
 
 my ($dry_run, $source, $dest, $recursive, $force, $hard, @addignore) = ( 0, '', '', 0, 0, 0 );
 my $ignore = '(?:.*/)?.(?:git.*|svn)(?:/.*)?$';
@@ -92,7 +92,7 @@ makes sense because the symlinks might be relative.
 If C<--ignore> is not specified, it defaults to ignoring F<.git> and F<.svn>
 directories and their contents.
 
-See L<File::LinkDir::OO> for complete details.
+See L<File::LinkDir> for complete details.
 
 =head1 AUTHOR
 
@@ -101,7 +101,7 @@ Matthew Musgrove, <mr.muskrat@gmail.com>
 
 =head1 COPYRIGHT
 
-Copyright (c) 2009-2010 the File::LinkDir::OO L</AUTHOR> as listed above.
+Copyright (c) 2009-2010 the File::LinkDir L</AUTHOR> as listed above.
 
 =head1 LICENSE
 

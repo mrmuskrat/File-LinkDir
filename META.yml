@@ -1,7 +1,8 @@
 ---
 abstract: 'Create links in one directory for files in another'
 author:
-  - 'Hinrik Örn Sigurðsson, C<< <hinrik.sig@gmail.com> >>'
+  - 'Hinrik Örn Sigurðsson, <hinrik.sig@gmail.com>'
+  - 'Matthew Musgrove, <mr.muskrat@gmail.com>'
 build_requires:
   ExtUtils::MakeMaker: 6.42
   Test::More: 0
@@ -13,7 +14,7 @@ license: gpl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
-name: File-LinkDir-OO
+name: File-LinkDir
 no_index:
   directory:
     - inc
@@ -22,7 +23,7 @@ requires:
   File::Path: 2.07
   perl: 5.8.0
 resources:
-  homepage: http://github.com/mrmuskrat/File-LinkDir-OO/tree
+  homepage: http://github.com/mrmuskrat/File-LinkDir/tree
   license: http://opensource.org/licenses/gpl-license.php
-  repository: git://github.com/mrmuskrat/File-LinkDir-OO.git
+  repository: git://github.com/mrmuskrat/File-LinkDir.git
 version: 1.00_05

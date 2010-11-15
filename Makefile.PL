@@ -1,7 +1,7 @@
 use inc::Module::Install;
 
-name           ('File-LinkDir-OO');
-all_from       ('lib/File/LinkDir/OO.pm');
+name           ('File-LinkDir');
+all_from       ('lib/File/LinkDir.pm');
 githubmeta     ();
 
 requires       ('File::Path'   => '2.07');

@@ -4,12 +4,12 @@ use Test::More tests => 20;
 
 use Cwd qw<abs_path>;
 
-use File::LinkDir::OO;
+use File::LinkDir;
 
 my $source = abs_path( 't/tests/src' );
 my $dest   = abs_path( 't/tests/dest' );
 
-my $fld = File::LinkDir::OO->new(
+my $fld = File::LinkDir->new(
     source => $source,
     dest   => $dest,
 );

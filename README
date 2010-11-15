@@ -1,10 +1,6 @@
-File-LinkDir-OO
+File-LinkDir
 
-Create links in one directory for files in another.
-
-This is a scriptable, object oriented approach to File::LinkDir's 
-functionality. In addition, File::LinkDir::OO adds the ability to
-use hard links.
+Create links (symlinks or hardlinks) in one directory for files in another.
 
 INSTALLATION
 
@@ -20,21 +16,21 @@ SUPPORT AND DOCUMENTATION
 After installing, you can find documentation for this module with the
 perldoc command.
 
-    perldoc File::LinkDir::OO
+    perldoc File::LinkDir
 
 You can also look for information at:
 
     RT, CPAN's request tracker
-        http://rt.cpan.org/NoAuth/Bugs.html?Dist=File-LinkDir-OO
+        http://rt.cpan.org/NoAuth/Bugs.html?Dist=File-LinkDir
 
     AnnoCPAN, Annotated CPAN documentation
-        http://annocpan.org/dist/File-LinkDir-OO
+        http://annocpan.org/dist/File-LinkDir
 
     CPAN Ratings
-        http://cpanratings.perl.org/d/File-LinkDir-OO
+        http://cpanratings.perl.org/d/File-LinkDir
 
     Search CPAN
-        http://search.cpan.org/dist/File-LinkDir-OO/
+        http://search.cpan.org/dist/File-LinkDir/
 
 
 COPYRIGHT

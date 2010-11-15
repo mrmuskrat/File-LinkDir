@@ -1,4 +1,4 @@
-package File::LinkDir::OO;
+package File::LinkDir;
 
 use strict;
 use warnings;
@@ -272,29 +272,29 @@ sub _normal
 
 =head1 NAME
 
-File::LinkDir::OO - Create links in one directory for files in another
+File::LinkDir - Create links in one directory for files in another
 
 =head1 SYNOPSIS
 
-  use File::LinkDir::OO;
-  my $linkdir = File::LinkDir:OO->new( 'source' => '/path/to/dir', 'dest' => '/dest/path', 'hard' => 1, 'recursive' => 1 );
+  use File::LinkDir;
+  my $linkdir = File::LinkDir->new( 'source' => '/path/to/dir', 'dest' => '/dest/path', 'hard' => 1, 'recursive' => 1 );
   $linkdir->run();
   $linkdir->init( 'source' => '/new/path', 'dest' => '/new/dest', );
   $linkdir->run();
 
 =head1 DESCRIPTION
 
-By default, File::LinkDir::OO will create symlinks in the destination directory for all top-level files, directories or symlinks found in the source directory. This is very useful for keeping the dot files in your C<$HOME> under version control. A typical use case:
+By default, File::LinkDir will create symlinks in the destination directory for all top-level files, directories or symlinks found in the source directory. This is very useful for keeping the dot files in your C<$HOME> under version control. A typical use case:
 
-  use File::LinkDir::OO;
-  my $linkdir = File::LinkDir::OO->new( 'source' => '.', 'dest' => '~' );
+  use File::LinkDir;
+  my $linkdir = File::LinkDir->new( 'source' => '.', 'dest' => '~' );
   $linkdir->run();
 
 =head1 METHODS
 
 =head2 new
 
-Creates a new File::LinkDir::OO object. This will call init() to set the options unless you pass 'skipinit' as the first argument.
+Creates a new File::LinkDir object. This will call init() to set the options unless you pass 'skipinit' as the first argument.
 
 =head2 init
 
@@ -373,15 +373,15 @@ Matthew Musgrove, C<< <mr.muskrat@gmail.com> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-file-linkdir-oo at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=File-LinkDir-OO>.  I will be notified, and then you'll
+Please report any bugs or feature requests to C<bug-file-linkdir at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=File-LinkDir>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc File::LinkDir::OO
+    perldoc File::LinkDir
 
 
 You can also look for information at:
@@ -390,19 +390,19 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=File-LinkDir-OO>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=File-LinkDir>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/File-LinkDir-OO>
+L<http://annocpan.org/dist/File-LinkDir>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/File-LinkDir-OO>
+L<http://cpanratings.perl.org/d/File-LinkDir>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/File-LinkDir-OO/>
+L<http://search.cpan.org/dist/File-LinkDir/>
 
 =back
 
@@ -418,11 +418,7 @@ by the Free Software Foundation; or the Artistic License.
 
 See http://dev.perl.org/licenses/ for more information.
 
-=head1 SEE ALSO
-
-L<File::LinkDir>
-
 =cut
 
-1; # End of File::LinkDir::OO
+1; # End of File::LinkDir
 

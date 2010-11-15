@@ -3,8 +3,8 @@
 use Test::More tests => 1;
 
 BEGIN {
-    use_ok( 'File::LinkDir::OO' ) || print "Bail out!
+    use_ok( 'File::LinkDir' ) || print "Bail out!
 ";
 }
 
-diag( "Testing File::LinkDir::OO $File::LinkDir::OO::VERSION, Perl $], $^X" );
+diag( "Testing File::LinkDir $File::LinkDir::VERSION, Perl $], $^X" );
