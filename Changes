@@ -1,3 +1,7 @@
+1.00_07
+    - Will not create a Makefile unless links and symlinks are supported.
+    - Corrected t/boilerplate.t.
+    - Added bin/link-files to MANIFEST.
 1.00_06
     - Don't ignore .gitconfig, but ignore .gitmodules, .gitignore, etc
     - Change the name to File::LinkDir

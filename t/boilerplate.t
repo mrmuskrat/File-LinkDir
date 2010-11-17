@@ -54,7 +54,7 @@ TODO: {
     "placeholder date/time"       => qr(Date/time)
   );
 
-  module_boilerplate_ok('lib/File/LinkDir/OO.pm');
+  module_boilerplate_ok('lib/File/LinkDir.pm');
 
 
 }

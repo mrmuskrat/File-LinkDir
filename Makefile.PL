@@ -1,3 +1,12 @@
+BEGIN {
+    use Config;
+    unless ( $Config{d_link} && $Config{d_symlink} )
+    {
+        print "1..0 # Skip: no link and/or symlink\n";
+        exit 0;
+    }
+}
+
 use inc::Module::Install;
 
 name           ('File-LinkDir');
