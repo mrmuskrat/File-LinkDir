@@ -9,7 +9,7 @@ use File::Find;
 use File::Path qw<remove_tree make_path>;
 use File::Spec::Functions qw<catpath splitpath>;
 
-our $VERSION = '1.00_07';
+our $VERSION = '1.00';
 $VERSION = eval $VERSION;
 
 sub new
