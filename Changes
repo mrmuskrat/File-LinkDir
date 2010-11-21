@@ -1,3 +1,8 @@
+1.01
+    - Made changes to get a UTF-8 META.yml instead of ISO-8859-1.
+        - Fixed encoding of META.yml.
+        - Fixed =encoding line of POD in lib/File/LinkDir.pm.
+        - Corrected Hinrik's name in two places in the POD.
 1.00
     - Changed version to 1.00.
 1.00_07

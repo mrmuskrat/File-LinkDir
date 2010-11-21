@@ -9,7 +9,7 @@ use File::Find;
 use File::Path qw<remove_tree make_path>;
 use File::Spec::Functions qw<catpath splitpath>;
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 $VERSION = eval $VERSION;
 
 sub new
@@ -268,7 +268,7 @@ sub _normal
 
 =pod
 
-=encoding utf8
+=encoding utf-8
 
 =head1 NAME
 
@@ -368,8 +368,8 @@ Creates hard links instead of symlinks.
 
 =head1 AUTHOR
 
-Hinrik E<Ouml>rn SigurE<eth>sson, C<< <hinrik.sig@gmail.com> >>
-Matthew Musgrove, C<< <mr.muskrat@gmail.com> >>
+Hinrik Örn Sigurðsson, E<lt>hinrik.sig@gmail.comE<gt>
+Matthew Musgrove, E<lt>mr.muskrat@gmail.comE<gt>
 
 =head1 BUGS
 
@@ -408,7 +408,7 @@ L<http://search.cpan.org/dist/File-LinkDir/>
 
 =head1 COPYRIGHT
 
-Copyright (c) 2009-2010 Hinrik E<Ouml>rn SigurE<eth>sson and Matthew Musgrove
+Copyright (c) 2009-2010 Hinrik Örn Sigurðsson and Matthew Musgrove
 
 =head1 LICENSE
 
