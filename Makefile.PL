@@ -15,5 +15,6 @@ all_from       ('lib/File/LinkDir.pm');
 requires       ('File::Path'   => '2.07');
 test_requires  ('Test::More'   => '0');
 tests_recursive();
+install_script ('bin/link-files');
 
 WriteAll();

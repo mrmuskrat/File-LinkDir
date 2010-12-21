@@ -1,3 +1,5 @@
+    - Actually install the link-files script
+
 1.01
     - Made changes to get a UTF-8 META.yml instead of ISO-8859-1.
         - Fixed encoding of META.yml.
