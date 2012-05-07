@@ -9,7 +9,7 @@ use File::Find;
 use File::Path qw<remove_tree make_path>;
 use File::Spec::Functions qw<catpath splitpath>;
 
-our $VERSION = '1.01';
+our $VERSION = '1.02_00';
 $VERSION = eval $VERSION;
 
 sub new
@@ -45,7 +45,13 @@ sub init
         my ( $opt, $value ) = ( shift @opts, shift @opts );
         if ( $opt eq 'addignore' )
         {
-            push @{ $self->{ $opt } }, $value;
+            for my $rx ( @{$value} )
+            {
+                local $@;
+                eval { $rx = qr/$rx/ };
+                die "Invalid regex passed to addignore: $@\n" if $@;
+            }
+            $self->{$opt} = $value;
         }
         else
         {
