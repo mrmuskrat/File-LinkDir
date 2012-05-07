@@ -8,7 +8,7 @@ use File::LinkDir;
 
 my $source = abs_path( 't/tests/src' );
 my $dest   = abs_path( 't/tests/dest' );
-my $ignore = '[13579]';
+my $ignore = [ 1, 3, 5, 7, 9 ]; 
 
 my $fld = File::LinkDir->new(
     source => $source,
