@@ -1,4 +1,6 @@
+1.02_01
     - Actually install the link-files script
+    - Correct how --add-ignore works and the corresponding test case.
 
 1.01
     - Made changes to get a UTF-8 META.yml instead of ISO-8859-1.
