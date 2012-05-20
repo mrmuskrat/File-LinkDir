@@ -11,7 +11,7 @@ use File::LinkDir;
 my $FLD = File::LinkDir->new( 'skipinit' );
 
 my ($dry_run, $source, $dest, $recursive, $force, $hard, @addignore) = ( 0, '', '', 0, 0, 0 );
-my $ignore = '(?:.*/)?.(?:git.*|svn)(?:/.*)?$';
+my $ignore = '(?:.*/)?.(?:git(?!config\b).*|svn)(?:/.*)?$';
 
 GetOptions(
     'n|dry-run'      => \$dry_run,
