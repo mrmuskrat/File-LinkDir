@@ -10,7 +10,7 @@ BEGIN {
 use inc::Module::Install;
 
 name           ('File-LinkDir');
-githubmeta;
+githubmeta();
 all_from       ('lib/File/LinkDir.pm');
 requires       ('File::Path'   => '2.07');
 test_requires  ('Test::More'   => '0');
