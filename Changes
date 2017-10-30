@@ -1,3 +1,5 @@
+1.03 Mon Oct 30 13:20:50 CDT 2017
+    - Updated Makefile.PL to fix https://rt.cpan.org/Ticket/Display.html?id=77300
     - Updated the ignore regex in the link-files script to match that of the module.
 1.02 Thu May 17 11:44:41 CDT 2012
     - Changed version to 1.02.
