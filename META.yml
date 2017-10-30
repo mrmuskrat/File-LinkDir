@@ -29,4 +29,4 @@ resources:
     type: git
     url: git://github.com/mrmuskrat/File-LinkDir.git
     web: https://github.com/mrmuskrat/File-LinkDir/tree
-version: 1.02
+version: 1.03
