@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/mrmuskrat/File-LinkDir.svg?branch=master)](https://travis-ci.org/99xt/w3c-link-validator)
+# File-LinkDir
 
-File-LinkDir
+[![Build Status](https://travis-ci.org/mrmuskrat/File-LinkDir.svg?branch=master)](https://travis-ci.org/mrmuskrat/File-LinkDir)
 
 Create links (symlinks or hardlinks) in one directory for files in another.
 
